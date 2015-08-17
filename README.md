@@ -20,3 +20,26 @@ $>mvn exec:exec
 Reading from cache [ key = a, value=b, version=1, hitCount=2, CreationTime = 1439480215000, LastAccessTime = 1439480303001 ]
 Writing to cache [ key = a, value=b, version=1, hitCount=1, CreationTime = 1439480303001, LastAccessTime = 1439480303006 ]
 ```
+
+
+
+
+HOW TO RUN THE HIBERNATE SAMPLE
+===============================
+The demo uses a HSQLDB with local file persistence.
+Save the hibernate entity using the following
+```
+$> mvn clean compile exec:exec -PsaveEntity -DaccountNumber=a1 -DcustomerName=c1 -Dbalance=10
+```
+
+Now load the entity using the following
+```
+$> mvn clean compile exec:exec -PloadEntity -DaccountNumber=a1 
+```
+
+This should now populate the 2nd level hibernate ehcache region.
+Loading the same entity should not now lead to the SQL select query being fired.
+Confirm 
+```
+$> mvn clean compile exec:exec -PloadEntity -DaccountNumber=a1
+```
