@@ -19,7 +19,9 @@ public class Account {
     private String accountNumber;
     private String customerName;
     private Double balance;
-    public Account(){}
+
+    public Account() {
+    }
 
     public Account(String accountNumber, String customerName, Double balance) {
         this.accountNumber = accountNumber;
@@ -52,5 +54,11 @@ public class Account {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+
+    @Override
+    public String toString() {
+        return "accountNumber[" + accountNumber + "] customerName[" + customerName + "] balance[" + balance + "]";
     }
 }
